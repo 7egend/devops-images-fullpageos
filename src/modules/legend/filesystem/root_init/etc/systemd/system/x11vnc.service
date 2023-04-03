@@ -1,0 +1,13 @@
+[Unit]
+Description=VNC Server for X11
+Requires=display-manager.service
+
+[Service]
+ExecStart=/usr/bin/x11vnc -display :0 -many -noxdamage -rfbport 5900 -shared
+ExecStop=/usr/bin/x11vnc -R stop
+Restart=on-failure
+User=pi
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

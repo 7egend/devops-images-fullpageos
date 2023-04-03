@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+########
+set -x
+set -e
+
+source /common.sh
+
+unpack /filesystem/home/pi /home/pi pi
+unpack /filesystem/boot /boot
+unpack /filesystem/root_init /
+
+# Update the package registry
+apt-get update
+
+# Setup x11vnc
+apt-get install -y --force-yes x11vnc
+
+sudo -u pi /home/pi/scripts/setX11vncPass raspberry
+ls -l /home/pi/.vnc/passwd
+
+# Enable x11vnc service
+systemctl enable x11vnc.service
+
+
+# Cleanup
+apt-get clean
+apt-get autoremove -y

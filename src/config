@@ -16,3 +16,13 @@ export RPI_IMAGER_ICON="https://raw.githubusercontent.com/guysoft/FullPageOS/dev
 
 export USAGE_STATISTICS_URL=https://fullpageos-tracking.gnethomelinux.com
 
+# 7egend
+export DIST_NAME=FullpageOS7egend
+# Disable fullpageos default page and dashboard
+export FULLPAGEOS_INCLUDE_LIGHTTPD=no
+export FULLPAGEOS_INCLUDE_DASHBOARD=no
+export FULLPAGEOS_INCLUDE_WELCOME=no
+export FULLPAGEOS_INCLUDE_X11VNC=no
+export BASE_RELEASE_COMPRESS=yes
+# Override previous MODULES
+export MODULES="base(network, disable-services(gui(fullpageos, legend)))"
