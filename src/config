@@ -18,11 +18,20 @@ export USAGE_STATISTICS_URL=https://fullpageos-tracking.gnethomelinux.com
 
 # 7egend
 export DIST_NAME=FullpageOS7egend
+
 # Disable fullpageos default page and dashboard
 export FULLPAGEOS_INCLUDE_LIGHTTPD=no
 export FULLPAGEOS_INCLUDE_DASHBOARD=no
 export FULLPAGEOS_INCLUDE_WELCOME=no
 export FULLPAGEOS_INCLUDE_X11VNC=no
 export BASE_RELEASE_COMPRESS=yes
+
 # Override previous MODULES
-export MODULES="base(network, disable-services(gui(fullpageos, legend)))"
+export MODULES="base(network, disable-services(gui(admin-toolkit, fullpageos, legend)))"
+
+# Ubuntu
+# export BASE_ARCH=arm64
+# export BASE_DISTRO=ubuntu
+# export BASE_USER=pi
+# export BASE_USER_PASSWORD=raspberry
+# export GUI_INCLUDE_ACCELERATION=no

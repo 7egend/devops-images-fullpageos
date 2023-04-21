@@ -21,6 +21,22 @@ ls -l /home/pi/.vnc/passwd
 # Enable x11vnc service
 systemctl enable x11vnc.service
 
+# Fix rotate.sh (by software)
+apt-get install -y --force-yes xinput
+sudo -u pi chmod +x /home/pi/scripts/rotate.sh
+
+# Rotate by hardware
+if [ "$SCREEN_ROTATION_HARDWARE" == "yes" ]
+then
+  # Disable gpu enablement service
+  touch /etc/gpu_enabled
+
+  sudo sed -i '/^dtoverlay=vc4-kms-v3d/ s/^/# /' /boot/config.txt
+  printf "display_lcd_rotate=1\n" | sudo tee -a /boot/config.txt
+  printf "dtoverlay=rpi-ft5406,touchscreen-swapped-x-y=1,touchscreen-inverted-x=1\n" | sudo tee -a /boot/config.txt
+
+  echo "Rotation by hardware enabled"
+fi
 
 # Cleanup
 apt-get clean

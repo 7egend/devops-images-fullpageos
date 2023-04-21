@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export logfile="/home/pi/.config/chromium/chrome_debug.log"
+tail -n 100 -F "$logfile"
