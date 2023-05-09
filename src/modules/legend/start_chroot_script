@@ -38,6 +38,9 @@ then
   echo "Rotation by hardware enabled"
 fi
 
+# Monitoring
+apt-get install -y --force-yes glances
+
 # Cleanup
 apt-get clean
 apt-get autoremove -y
