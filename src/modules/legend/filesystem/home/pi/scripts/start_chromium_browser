@@ -13,6 +13,7 @@ chromium-browser \
    --disable-features=Translate \
    --autoplay-policy=no-user-gesture-required \
    --enable-virtual-keyboard \
+   --remote-debugging-port=9222 \
    --app=$(/home/pi/scripts/get_url)
 exit;
 
